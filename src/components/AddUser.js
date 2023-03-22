@@ -8,7 +8,7 @@ const AddUser = () => {
         console.log(user);
 
         fetch('http://localhost:5000/users',{
-            method: 'PUT',
+            method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
@@ -16,7 +16,10 @@ const AddUser = () => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data)
+            if(data.acknowledged){
+                alert('user added successfully');
+                event.target.reset();
+            }
         })
     }
 
